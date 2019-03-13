@@ -1,0 +1,15 @@
+<div *ngIf="character" class="card" style="width: 100%;">
+  <img class="card-img-top" [src]="character.thumbnail.path" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{character.name}}</h5>
+    <p class="card-text">{{character.description}}</p>
+  </div>
+  <div *ngIf="character.comics">
+    <h3>Comics</h3>
+    <ul>
+      <li *ngFor="let item of character.comics.items">
+        <p>{{item.name}}</p>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="mh-pagination">
+  <span *ngFor="let item of getPaginationModel(); trackBy:getItemKey" [ngSwitch]="item.type">
+    <button type="button" (click)="onSelectPage(item.value)" *ngSwitchCase="ITEM_TYPES.FIRST_PAGE_LINK">&lt;&lt;</button>
+    <button type="button" (click)="onSelectPage(item.value)" *ngSwitchCase="ITEM_TYPES.PREVIOUS_PAGE_LINK">&lt;</button>
+    <button type="button" (click)="onSelectPage(item.value)" *ngSwitchCase="ITEM_TYPES.PAGE" [style.fontWeight]="item.isActive ? 'bold' : ''">{{item.value}}</button>
+    <button type="button" (click)="onSelectPage(item.value)" *ngSwitchCase="ITEM_TYPES.ELLIPSIS">...</button>
+    <button type="button" (click)="onSelectPage(item.value)" *ngSwitchCase="ITEM_TYPES.NEXT_PAGE_LINK">&gt;</button>
+    <button type="button" (click)="onSelectPage(item.value)" *ngSwitchCase="ITEM_TYPES.LAST_PAGE_LINK">&gt;&gt;</button>
+  </span>
+</div>

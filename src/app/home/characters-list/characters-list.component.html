@@ -1,0 +1,27 @@
+<div class="container">
+  <p>All Marvels</p>            
+  <table class="table table-bordered"  *ngIf="characters && !isLoading">
+    <thead>
+      <tr>
+        <th style="width: 25%">Name</th>
+        <th  colspan="2" style="width: 75%">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let character of characters.data.results" routerLink="/detail/{{character.id}}">
+        <td style="width: 25%">{{character.name}}</td>
+        <td style="width: 65%">{{character.description | slice:0:100}}</td>
+        <td style="width: 10%">
+          <img class="img-fluid img-thumbnail img-responsive" [src]="character.thumbnail.path" alt="Card image cap">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<app-characters-pagination
+    *ngIf="getTotalPages()"
+    [currentPage]="page"
+    [totalPages]="getTotalPages()"
+    (change)="onChangePage($event)"
+></app-characters-pagination>
