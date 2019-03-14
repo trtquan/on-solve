@@ -1,5 +1,5 @@
 <div class="container">
-  <p>All Marvels</p>            
+  <h3>All Marvels</h3>            
   <table class="table table-bordered"  *ngIf="characters && !isLoading">
     <thead>
       <tr>
@@ -16,12 +16,17 @@
         </td>
       </tr>
     </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3">
+          <app-characters-pagination
+          *ngIf="getTotalPages()"
+          [currentPage]="page"
+          [totalPages]="getTotalPages()"
+          (change)="onChangePage($event)">
+          </app-characters-pagination>
+        </td>
+      </tr>
+    </tfoot>
   </table>
 </div>
-
-<app-characters-pagination
-    *ngIf="getTotalPages()"
-    [currentPage]="page"
-    [totalPages]="getTotalPages()"
-    (change)="onChangePage($event)"
-></app-characters-pagination>
